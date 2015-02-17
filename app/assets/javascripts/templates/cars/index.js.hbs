@@ -1,0 +1,23 @@
+<div id="cars-index" class="panel">
+  <h1>Cars</h1>
+  <table role="grid">
+    <thead>
+      <tr>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Color</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+    	{{# each car in model}}
+        <tr>
+          <td>{{car.make}}</td>
+          <td>{{car.model}}</td>
+          <td>{{car.color}}</td>
+          <td>{{car.condition}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+  </table>
+</div>
