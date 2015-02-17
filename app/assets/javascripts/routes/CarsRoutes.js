@@ -20,3 +20,28 @@ Cars.CarsShowRoute = Ember.Route.extend({
     }
   }
 });
+
+Cars.CarsNewRoute = Ember.Route.extend({
+  model: function() {
+    return this.store.createRecord('car', {});
+  },
+  deactivate: function() {
+    var model = this.modelFor(this.routeName);
+    model.rollback();
+  },
+  actions: {
+    save: function(model) {
+      var self = this;
+      model.save().then(function(response) {
+        console.log('Success!');
+        //transition back to index
+        //self.transitionTo('cars.index');
+ 
+        //transition to the saved new car
+        self.transitionTo('cars.show', response);
+      }).catch(function() {
+        console.log('Failure!');
+      });
+    }
+  }
+});

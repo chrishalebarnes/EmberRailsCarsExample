@@ -23,6 +23,17 @@ class CarsController < ApplicationController
     end    
   end
  
+  def create
+    @car = Car.new(car_params)
+    respond_to do |format|
+      if @car.save
+        format.json { render json: @car, status: :created }
+      else
+        format.json { render json: @car.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+ 
   private
     def set_car
       @car = Car.find(params[:id])
