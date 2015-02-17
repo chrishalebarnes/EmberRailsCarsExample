@@ -1,7 +1,17 @@
 Cars.CarsIndexRoute = Ember.Route.extend({
   model: function() {
     return this.store.findAll('car');
-  }
+  },
+  actions: {
+  	delete: function(car) {
+	  car.deleteRecord();
+	  car.save().then(function(response) {
+	    console.log('Success!')
+	  }).catch(function() {
+	    console.log('Failure!')
+	  });
+	}
+  }  
 });
 
 Cars.CarsShowRoute = Ember.Route.extend({

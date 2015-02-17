@@ -1,5 +1,5 @@
 class CarsController < ApplicationController
-  before_action :set_car, only: [:show, :update]
+  before_action :set_car, only: [:show, :update, :destroy]
  
   def index
     respond_to do |format|
@@ -28,6 +28,16 @@ class CarsController < ApplicationController
     respond_to do |format|
       if @car.save
         format.json { render json: @car, status: :created }
+      else
+        format.json { render json: @car.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+ 
+  def destroy
+    respond_to do |format|
+      if @car.destroy
+        format.json { render json: Car.all, status: :ok }
       else
         format.json { render json: @car.errors, status: :unprocessable_entity }
       end
