@@ -2,5 +2,6 @@
 
 Cars.Router.map(function() {
   this.resource('cars', function() {
+    this.route('show', { path: '/:id' });
   });
 });

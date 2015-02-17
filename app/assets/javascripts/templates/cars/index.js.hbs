@@ -12,7 +12,7 @@
     <tbody>
     	{{# each car in model}}
         <tr>
-          <td>{{car.make}}</td>
+          <td>{{#link-to 'cars.show' car.id}} {{car.make}} {{/link-to}}</td>
           <td>{{car.model}}</td>
           <td>{{car.color}}</td>
           <td>{{car.condition}}</td>
