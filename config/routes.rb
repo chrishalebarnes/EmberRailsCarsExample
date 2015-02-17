@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'cars/index'
+
   root :to => 'assets#index'
   get 'assets/index'
 
